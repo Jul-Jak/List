@@ -124,6 +124,7 @@ T TList<T>::DeleteHead()
 		Item<T>* temp = first;
 		first = first->next;
 		return temp->Data;
+		delete temp;
 	}
 	return 0;
 }
