@@ -123,8 +123,8 @@ T TList<T>::DeleteHead()
 	{
 		Item<T>* temp = first;
 		first = first->next;
-		return temp->Data;
 		delete temp;
+		return temp->Data;
 	}
 	return 0;
 }
