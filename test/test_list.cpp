@@ -27,6 +27,7 @@ TEST(TList, can_insert_at_start)
 	Item<int>* ft = new Item<int>;		ft->Data = 0;
 	Item<int>* second = new Item<int>;	second->Data = 1;
 	ls.InsertHead(ft);
+	
 	ASSERT_NO_THROW(ls.InsertHead(second));
 }
 
@@ -35,7 +36,7 @@ TEST(TList, can_insert_at_end)
 	TList<int> ls;
 	Item<int>* nd = new Item<int>;
 	nd->Data = 3;
-
+	
 	ASSERT_NO_THROW(ls.InsertEnd(nd));
 }
 
@@ -56,6 +57,8 @@ TEST(TList, can_delete_at_start)
 	TList<int> ls;
 	Item<int>* ft = new Item<int>;		ft->Data = 0;
 	Item<int>* second = new Item<int>;	second->Data = 1;
+	ls.InsertHead(ft);
+	ls.InsertPointer(ft, second);
 	
 	ASSERT_NO_THROW(ls.DeleteHead());
 }
@@ -65,25 +68,23 @@ TEST(TList, can_delete_at_end)
 	TList<int> ls;
 	Item<int>* ft = new Item<int>;		ft->Data = 0;
 	Item<int>* second = new Item<int>;	second->Data = 1;
-
 	ls.InsertHead(ft);
 	ls.InsertPointer(ft, second);
-
+	
 	ASSERT_NO_THROW(ls.DeleteEnd());
 }
 
-TEST(TList, can_delete_at_pointer)
+TEST(TList, can_delete_at_pointer)//
 {
 	TList<int> ls;
 	Item<int>* ft = new Item<int>;		ft->Data = 0;
 	Item<int>* second = new Item<int>;	second->Data = 1;
 	Item<int>* third = new Item<int>;		third->Data = 2;
-
 	ls.InsertHead(ft);
 	ls.InsertPointer(ft, second);
 	ls.InsertPointer(second, third);
-
-	ASSERT_NO_THROW(ls.DeletePointer(second));
+	
+	ASSERT_NO_THROW(ls.DeletePointer(ft));
 }
 
 TEST(TList, Search_elem)
@@ -95,6 +96,5 @@ TEST(TList, Search_elem)
 	ls.InsertHead(ft);
 	ls.InsertEnd(second);
 	ls.InsertEnd(third);
-
 	EXPECT_EQ(second, ls.Search(1));
 }
