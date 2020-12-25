@@ -119,7 +119,7 @@ void TList<T>::InsertPointer(Item<T>* x, Item<T>* n)
 template <class T>
 void TList<T>::DeleteHead()
 {
-	if (first == NULL) throw "Error!";
+	if (first == NULL) throw "Error!!!";
 	Item<T>* temp = first;
 	first = first->next;
 	delete temp;
