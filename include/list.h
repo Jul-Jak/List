@@ -31,7 +31,7 @@ public:
 	void InsertEnd(Item<T>*);
 	void InsertPointer(Item<T>*, Item <T>* p);
 
-	T DeleteHead();
+	void DeleteHead();
 	T DeleteEnd();
 	T DeletePointer(Item <T>* p);
 };
@@ -117,16 +117,12 @@ void TList<T>::InsertPointer(Item<T>* x, Item<T>* n)
 }
 
 template <class T>
-T TList<T>::DeleteHead()
+void TList<T>::DeleteHead()
 {
-	if (first != NULL)
-	{
-		Item<T>* temp = first;
-		first = first->next;
-		delete temp;
-		return temp->Data;
-	}
-	return 0;
+	if (first == NULL) throw "Error!";
+	Item<T>* temp = first;
+	first = first->next;
+	delete temp;
 }
 
 template <class T>
