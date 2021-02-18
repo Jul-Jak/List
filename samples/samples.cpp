@@ -17,7 +17,7 @@ int main() {
 	List.FindFromEnd(2);
 
 	TList<int> List1;
-	Item<int>* first = new Item<int>;		first->Data = 0;
+	Item<int>* first = new Item<int>;		first->Data = 7;
 	List1.InsertHead(first);
 	List1.FindFromEnd(1);
 }
