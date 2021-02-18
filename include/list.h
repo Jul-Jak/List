@@ -31,9 +31,12 @@ public:
 	void InsertEnd(Item<T>*);
 	void InsertPointer(Item<T>*, Item <T>* p);
 
+	T FindFromEnd(int position_from_end);
+
 	void DeleteHead();
 	T DeleteEnd();
 	T DeletePointer(Item <T>* p);
+	void PrintL();
 };
 
 template <class T>
@@ -155,3 +158,36 @@ T TList <T> ::DeletePointer(Item <T>* p)
 		throw 1;
 }
 
+template <class T>
+void TList <T> ::PrintL() 
+{
+	Item <T>* temp = first;
+	while (temp)
+	{
+		cout << temp->Data << endl;
+		temp = temp->next;
+	}
+}
+
+template <class T>
+T TList<T>::FindFromEnd(int position_from_end)
+{
+	// ЗАДАНИЕ
+	// Вывести k-й с конца элемент списка за один проход
+
+	Item<T>* head1 = this->first;
+	Item<T>* head2 = this->first;
+
+	for (int i = 0; i < position_from_end - 1; i++) {
+		if (head2 == NULL) return NULL;
+		head2 = head2->next;
+	}
+
+	while (head2->next != NULL) {
+		head1 = head1->next;
+		head2 = head2->next;
+	}
+	std::cout << head1->Data << std::endl;
+	return head1->Data;
+	
+}
